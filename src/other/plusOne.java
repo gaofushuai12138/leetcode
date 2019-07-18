@@ -1,5 +1,4 @@
-import javax.annotation.processing.SupportedSourceVersion;
-import java.util.UUID;
+package other;
 
 /***
  * 有问题

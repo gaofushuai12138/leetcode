@@ -5,6 +5,8 @@ import java.util.Stack;
 
 public class isBalanced {
 
+    private boolean flag;
+
     public int getChildTreeHeight(TreeNode root){
         if(root == null){
             return 0;
@@ -15,19 +17,6 @@ public class isBalanced {
     }
 
     public boolean isBalanced(TreeNode treeNode){
-        int diff = 0;
-        if(treeNode == null){
-            return true;
-        };
-        if(treeNode.left == null && treeNode.right == null){
-            return true;
-        }
-        System.out.println(getChildTreeHeight(treeNode.left));
-        System.out.println(getChildTreeHeight(treeNode.right));
-        diff = Math.abs(getChildTreeHeight(treeNode.left) - getChildTreeHeight(treeNode.right));
-        if(diff <= 1){
-            return true;
-        }
         return false;
     }
 

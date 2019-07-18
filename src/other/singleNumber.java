@@ -1,3 +1,5 @@
+package other;
+
 public class singleNumber {
     public int singleNumber(int[] nums){
         int result = 0;

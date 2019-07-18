@@ -1,3 +1,5 @@
+package other;
+
 public class Palindrome {
     public boolean isPalindrome(int x) {
         String num = String.valueOf(x);

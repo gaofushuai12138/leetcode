@@ -1,3 +1,5 @@
+package other;
+
 /***
  * 存在问题
  */
