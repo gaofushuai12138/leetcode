@@ -10,13 +10,17 @@ public class Graph {
 
     private int numOfEdges;
 
+    private boolean isVisited[];
+
     //构造器
     public Graph(int n) {
         edges = new int[n][n];
+        isVisited = new boolean[n];    //判断是否被访问
         vertexList = new ArrayList<>();
         numOfEdges = 0;
 //        this.edges = edges;
     }
+
 
     //插入结点
     public void insertVertex(String vertex){
@@ -79,6 +83,55 @@ public class Graph {
         }
     }
 
+    
+    /***
+     *
+     * @param index
+     * @return 如果存在就返回对应的下标,否则就返回-1
+     */
+    public int getFistNeighbor(int index){
+        for(int j = 0; j < vertexList.size();j++){
+            if(edges[index][j] > 0){
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    //根据前一个邻接结点的下标来获取下一个邻接结点
+    public int getNextNeighbor(int v1,int v2){
+        for(int j = v2 + 1; j < vertexList.size();j++){
+            if(edges[v1][j] > 0){
+                return j;
+            }
+        }
+        return -1;
+    }
+
+
+    public void dfs(boolean[] isVisited,int i){
+        System.out.print(getValueByIndex(i) + "->");
+        isVisited[i] = true;
+        int w = getFistNeighbor(i);
+        while (w != -1){
+            if(!isVisited[w]){
+                dfs(isVisited,w);
+            }else {
+                w = getNextNeighbor(i,w);
+            }
+        }
+    }
+
+    public void dfs(){
+        //遍历所有的结点进行dfs
+        for(int i = 0; i < getNumOfVertex();i++){
+            if(!isVisited[i]){
+                dfs(isVisited,i);
+            }
+        }
+    }
+
+
     public static void main(String[] args){
         int n = 5;
         String VertexValue[] = {"A","B","C","d","E"};
@@ -95,5 +148,10 @@ public class Graph {
         graph.insertEdge(1,4,1);
 
         graph.showGraph();
+
+
+        System.out.println();
+
+        graph.dfs();
     }
 }
